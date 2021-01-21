@@ -27,9 +27,9 @@ Route::get('/products/{id}/price', function () {
         dump($node->text());
 
     });
-   // $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/text()')->each(function ($node) {
+    // $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/text()')->each(function ($node) {
 
-        //dump($node->text());
+    //dump($node->text());
 
     //});
     echo "title:{$crawler->filter('.page-title')->first()->text()}";
@@ -38,8 +38,10 @@ Route::get('/products/{id}/price', function () {
 
     $price_stotinki = $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/sup/text()')->first()->text();
     //dd($price_stotinki);
-    $price = (float)$price_bgn . '.' .$price_stotinki;
+    $price = (float)$price_bgn . '.' . $price_stotinki;
     echo "<p>price:{$price}</p>";
-    dd($price);
-
+    //dd($price);
+    $img = $crawler->filterXPath('//a[@class=\'thumbnail product-gallery-image gtm_rp125918\']//img/@src'
+    )->first()->text();
+   echo "<div><img src='{$img}' alt='pic'></div>";
 });
