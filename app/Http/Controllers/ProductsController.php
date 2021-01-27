@@ -46,27 +46,10 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {
-        $client = new Client();
-        $crawler = $client->request('GET', 'https://www.emag.bg/prahosmukachka-stick-2-v-1-philips-powerpro-duo-18-v-0-6-l-tehnologija-powercyclone-siva-fc6168-01/pd/DWJPLBBBM/?ref=prod_CMP-26852_4145_44681');
-        // $crawler->filter('.page-title')->each(function ($node) {
-        // dump($node->text());
-        //});
-        // $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/text()')->each(function ($node) {
-
-        //dump($node->text());
-
-        //});
-        $title = $crawler->filter('.page-title')->first()->text();
-
-        $price_bgn = $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/text()')->first()->text();
-        $price_stotinki = $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/sup/text()')->first()->text();
-        //dd($price_stotinki);
-        $price = (float)$price_bgn . '.' . $price_stotinki;
-
-        //dd($price);
-        $img = $crawler->filterXPath('//a[@class=\'thumbnail product-gallery-image gtm_rp125918\']//img/@src'
-        )->first()->text();
-        return view('products.single_product', compact('title', 'price', 'img'));
+        $get_data = $this->scrape_data()->content();
+        $data = json_decode($get_data,true);
+        //dd($data);
+        return view('products.single_product', compact('data'));
     }
 
     /**
@@ -101,5 +84,37 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+    public function scrape_data()
+    {
+        $details = array();
+        $client = new Client();
+        $url = 'https://www.emag.bg/prahosmukachka-stick-2-v-1-philips-powerpro-duo-18-v-0-6-l-tehnologija-powercyclone-siva-fc6168-01/pd/DWJPLBBBM/?ref=prod_CMP-26852_4145_44681';
+        $crawler = $client->request('GET', $url);
+
+        $title = $crawler->filter('.page-title')->first()->text();
+        $price_bgn = $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/text()')->first()->text();
+        $price_stotinki = $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/sup/text()')->first()->text();
+        //dd($price_stotinki);
+        $price = (float)$price_bgn . '.' . $price_stotinki;
+
+        //dd($price);
+        $img = $crawler->filterXPath('//a[@class=\'thumbnail product-gallery-image gtm_rp125918\']//img/@src'
+        )->first()->text();
+
+        array_push($details, $title, $img, $price);
+        $result = $this->return_result($details);
+        return response($result, 200);
+
+    }
+
+    private function return_result($details)
+    {
+        $output = [];
+        $output['title'] = $details[0];
+        $output['img'] = $details[1];
+        $output['price'] = $details[2];
+        //dd($output);
+        return $output;
     }
 }

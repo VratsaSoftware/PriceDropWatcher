@@ -8,14 +8,15 @@
                     <div class="card-header">{{ 'Product Description' }}</div>
 
                     <div class="card-body">
-                        {{$title}}
+                        {{$data['title']}}
                     </div>
                     <div class="card-body">
-                        {{$price}}
+                        {{$data['price']}}
                     </div>
                     <div class="card-body">
-                        <img src="{{$img}}" alt="pic">
+                        <img src="{{$data['img']}}" alt="pic">
                     </div>
+
                 </div>
             </div>
         </div>
