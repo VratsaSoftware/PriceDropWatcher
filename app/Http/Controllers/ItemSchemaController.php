@@ -14,7 +14,7 @@ class ItemSchemaController extends Controller
      */
     public function index()
     {
-        $itemSchema = ItemSchema::orderBy('id', 'DESC')->paginate(10);
+        $itemSchema = ItemSchema::orderBy('id', 'DESC')->paginate(200);
 
         return view('dashboard.item_schema.index')->withItemSchemas($itemSchema);
     }

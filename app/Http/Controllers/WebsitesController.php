@@ -14,7 +14,7 @@ class WebsitesController extends Controller
      */
     public function index()
     {
-        $websites = Website::orderBy('id', 'DESC')->paginate(10);
+        $websites = Website::orderBy('id', 'DESC')->paginate(200);
 
         return view('dashboard.website.index')->withWebsites($websites);
     }
