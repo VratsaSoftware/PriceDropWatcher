@@ -3,6 +3,7 @@
 Route::get('/', 'HomeController@index');
 Route::get('/article-details/{id}', 'HomeController@getArticleDetails');
 Route::get('/category/{id}', 'HomeController@getCategory');
+Route::get('/test', 'TestController@index');
 
 Route::group(['prefix' => 'dashboard'], function() {
     Route::resource('/websites', 'WebsitesController');
