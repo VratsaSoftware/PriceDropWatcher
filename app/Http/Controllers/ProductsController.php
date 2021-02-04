@@ -111,7 +111,7 @@ class ProductsController extends Controller
             return response($result, 200);
         } catch (\InvalidArgumentException $e) {
             $res = $client->getResponse();
-            dd($res->getStatusCode());
+            //dd($res->getStatusCode());
             if ($res->getStatusCode() !== 200) {
                 dd($res->getStatusCode());
                 return $res->getStatusCode();
