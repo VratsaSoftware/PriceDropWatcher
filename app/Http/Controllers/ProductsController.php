@@ -90,11 +90,16 @@ class ProductsController extends Controller
 
     public function scrape_data()
     {
-        $details = array();
-        $client = new Client();
         try {
+
+
+            $details = array();
+            $client = new Client();
+
             $url = 'https://www.emag.bg/prahosmukachka-stick-2-v-1-philips-powerpro-duo-18-v-0-6-l-tehnologija-powercyclone-siva-fc6168-01/pd/DWJPLBBBM/?ref=prod_CMP-26852_4145_44681';
             $crawler = $client->request('GET', $url);
+            $category = $crawler->filterXPath('//ol[@class=\'breadcrumb\']//li//a')->last()->text();
+            dd($category);
             $title = $crawler->filter('.page-title')->first()->text();
             $price_bgn = $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/text()')->first()->text();
             $price_stotinki = $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/sup/text()')->first()->text();
@@ -104,12 +109,13 @@ class ProductsController extends Controller
             //dd($price);
             $img = $crawler->filterXPath('//a[@class=\'thumbnail product-gallery-image gtm_rp125918\']//img/@src'
             )->first()->text();
+
             array_push($details, $title, $img, $price);
             $result = $this->return_result($details);
             return response($result, 200);
-        } catch (\InvalidArgumentException $e) {
+        } catch (\ErrorException $e) {
             $res = $client->getResponse();
-            //dd($res->getStatusCode());
+            dd($res->getStatusCode());
             if ($res->getStatusCode() !== 200) {
                 dd($res->getStatusCode());
                 return $res->getStatusCode();
@@ -126,8 +132,9 @@ class ProductsController extends Controller
         //dd($output);
         return $output;
     }
-    public function get_domain(){
-        $domain = parse_url('https://www.emag.bg/prahosmukachka-stick-2-v-1-philips-powerpro-duo-18-v-0-6-l-tehnologija-powercyclone-siva-fc6168-01/pd/DWJPLBBBM/?ref=prod_CMP-26852_4145_44681', PHP_URL_HOST);
-        dd($domain);
+
+    public function get_domain()
+    {
+        return parse_url('https://www.emag.bg/prahosmukachka-stick-2-v-1-philips-powerpro-duo-18-v-0-6-l-tehnologija-powercyclone-siva-fc6168-01/pd/DWJPLBBBM/?ref=prod_CMP-26852_4145_44681', PHP_URL_HOST);
     }
 }
