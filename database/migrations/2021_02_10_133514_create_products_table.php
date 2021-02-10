@@ -19,12 +19,13 @@ class CreateProductsTable extends Migration
                 ->constrained()
                 ->onDelete('cascade');
             $table->foreignId('category_id')
+                ->nullable()
                 ->constrained()
                 ->onDelete('cascade');
-            $table->text('title');
-            $table->string('image');
-            $table->float('price',8,2);
-            $table->time('check_on');
+            $table->text('title')->nullable();
+            $table->string('image')->nullable();
+            $table->float('price',8,2)->nullable();
+            $table->dateTime('check_on')->nullable();
             $table->timestamps();
         });
     }

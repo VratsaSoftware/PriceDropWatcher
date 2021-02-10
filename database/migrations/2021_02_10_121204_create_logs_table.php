@@ -18,7 +18,6 @@ class CreateLogsTable extends Migration
             $table->string('request');
             $table->string('status',50);
             $table->text('response');
-            $table->time('time');
             $table->timestamps();
         });
     }

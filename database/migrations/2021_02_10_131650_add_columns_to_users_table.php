@@ -17,7 +17,7 @@ class AddColumnsToUsersTable extends Migration
             $table->foreignId('role_id')
                 ->constrained()
                 ->onDelete('cascade');
-            $table->string('image');
+            $table->string('image')->nullable();
         });
     }
 
