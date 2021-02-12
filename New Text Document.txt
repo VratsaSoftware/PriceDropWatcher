@@ -21,3 +21,6 @@
 2000 - 8.7 min
 2000 - 6.8 min
 3500 - 11.8 min
+
+errors:
+500 - The current node list is empty. 
