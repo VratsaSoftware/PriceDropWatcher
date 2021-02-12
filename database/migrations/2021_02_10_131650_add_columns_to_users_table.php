@@ -15,6 +15,7 @@ class AddColumnsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('role_id')
+                ->nullable()
                 ->constrained()
                 ->onDelete('cascade');
             $table->string('image')->nullable();
