@@ -5,7 +5,7 @@
 100 - 65s
 100-62s
 
-10
+50Mbps
 100 - 27s
 100 - 22s
 1000 - 4.2min
@@ -24,6 +24,10 @@
 4000 - 17.4 min
 5000 - 18.7 min
 6500 - 23.5 min
+7000  - 31.6 min
+7500 - Fail
+7099 - 33 min
+7500 - Fail
 
 error:
 500 - The current node list is empty. 
