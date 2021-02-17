@@ -1,23 +1,24 @@
+Emag
 40 - 70s
 80 - 110s
 100 -140s
 100 - 70s
 100 - 65s
-100-62s
+100- 62s
 
 50Mbps
+10 - 3.2s
+10 -3.2s
+10 -3.6s
 100 - 27s
 100 - 22s
 1000 - 4.2min
-
 1000 - 4.1 min
 1000 - 4.3 min
 1000 -3.5 min
 1000 - 4.3 min
-+
-+
-+3.9
-+3.4
++3.9m
++3.4m
 2000 - 8.7 min
 2000 - 6.8 min
 3500 - 11.8 min
@@ -32,3 +33,15 @@
 error:
 500 - The current node list is empty. 
 500 - Idle timeout reached for "https://www.emag.bg/bezzhichna-mishka-gaming-logitech-g604-lightspeed-hero-16k-dpi-cherna-910-005649/pd/DJ83D8BBM/?ref=others_also_viewed_1_5&provider=rec&recid=rec_43_8112a5fbe83f454e62eb96a39e5227bee9247b63d81793a54cb31bb626525f13_1613068891&scenario_ID=43".
+
+tehnopolis 50Mbps
+
+10 - 3 sek
+10 - 2.9 sek
+10 - 3.3 sek
+100 - 7 sek
+100 - 6.9 sek
+100 - 7.1 sek
+1000 - 46s
+1000 - 50s
+1000 -45s

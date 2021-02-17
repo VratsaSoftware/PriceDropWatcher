@@ -22,7 +22,7 @@ class TestController extends Controller
        
         //dd($url);
         //$crawler = $client->request('GET', $url);
-        for ($i=0; $i < 1420; $i++) { 
+        for ($i=0; $i < 2; $i++) { 
              for ($j=0; $j < 5; $j++) { 
                 $crawler = $client->request('GET', $url[$j]);
                 $price_bgn[] = $crawler->filterXPath('//p[@class=\'product-new-price\']/text()')->first()->text();
