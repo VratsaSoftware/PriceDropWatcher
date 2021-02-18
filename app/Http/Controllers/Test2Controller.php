@@ -22,7 +22,7 @@ class Test2Controller extends Controller
        
         //dd($img);
         //dd($price_bgn);
-        for ($i=0; $i < 10000; $i++) { 
+        for ($i=0; $i < 15000; $i++) { 
              for ($j=0; $j < 5; $j++) { 
                 $crawler = $client->request('GET', $url[$j]);
                 $price_bgn[] = $crawler->filterXPath('//div[@class=\'product-price\']//p[@class=\'price\']//span[@class=\'price-value\']')->first()->text();
