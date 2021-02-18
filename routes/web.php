@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Goutte\Client;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/products/{id}/details', 'ProductsController@show');
+Route::get('/products/{id}/domain', 'ProductsController@get_domain');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
