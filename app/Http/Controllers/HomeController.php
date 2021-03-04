@@ -38,6 +38,7 @@ class HomeController extends Controller
     }
     public function EditProfile()
     {
-        return view('admin.profileEdit');
+        $user = Auth::user();
+        return view('admin.profileEdit',compact('user'));
     }
 }
