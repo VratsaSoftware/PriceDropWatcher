@@ -31,9 +31,13 @@ class HomeController extends Controller
         return view('admin.index');
     }
 
-    public function GetProfile()
+    public function ShowProfile()
     {
         $user = Auth::user();
-        return view('admin.profile',compact('user'));
+        return view('admin.profileShow',compact('user'));
+    }
+    public function EditProfile()
+    {
+        return view('admin.profileEdit');
     }
 }

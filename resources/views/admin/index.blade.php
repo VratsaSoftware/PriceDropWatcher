@@ -6,7 +6,7 @@
             }
 </style>
 <div class="flex-center position-ref full-height">
-    <a href="{{route('profile')}}">Профил</a>
+    <a href="{{route('ShowProfile')}}">Профил</a>
 </div>
 
 @extends('layouts.admin')
