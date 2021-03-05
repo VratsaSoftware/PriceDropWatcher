@@ -19,11 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products/{id}/details', 'ProductsController@show');
-Route::get('/products/{id}/domain', 'ProductsController@get_domain');
+// Route::get('/products/{id}/details', 'ProductsController@show');
+// Route::get('/products/{id}/domain', 'ProductsController@get_domain');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/ShowProfile', 'HomeController@ShowProfile')->name('ShowProfile');
 Route::get('/EditProfile', 'HomeController@EditProfile')->name('EditProfile');
+Route::post('/UpdateProfile', 'HomeController@UpdateProfile')->name('UpdateProfile');

@@ -5,12 +5,12 @@
 <div class="row">
 	<div class="col-sm-6 offset-sm-3">
 		<h2>Edit profile</h2>
-		<form action="" method="POST" enctype="multipart/form-data">
-			{{ csrf_field() }}
-			{{ method_field('PUT') }}
+		<form action="{{route('UpdateProfile')}}" method="POST" enctype="multipart/form-data">
+			{{csrf_field()}}
+			{{method_field('PUT')}}
 			<div class="form-group">
 				<p>
-					<img src="" width="200">
+					<img src="{{ asset('storage/' . $user->image )}}" width="200">
 				</p>				
 				<label for="filename">
 					Добавете снимка

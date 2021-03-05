@@ -41,4 +41,20 @@ class HomeController extends Controller
         $user = Auth::user();
         return view('admin.profileEdit',compact('user'));
     }
+
+     public function update(CreateUpdateRequest $request, user $user)
+    {
+        $ext = $request->file('filename')->getClientOriginalExtension(); 
+        $filename = str_replace(' ', '_', $request->name);
+        $path = $request->file('filename')
+            ->storeAs('public/user_images', $filename .'.' . $ext);
+
+        $user->email = $request->email;
+        $user->picture = 'user_images/' . $filename .'.' . $ext;
+    
+        return redirect()->route('cars.index')
+                ->with('success', 'A car was edited!'); 
+
+    }
+
 }
