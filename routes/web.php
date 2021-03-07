@@ -25,3 +25,7 @@ Route::get('/products/{id}/domain', 'ProductsController@get_domain');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['admin']], function () {
+    Route::get('admin-view', 'HomeController@renderAdminView')->name('admin.view');
+});
