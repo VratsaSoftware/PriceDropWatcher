@@ -31,9 +31,9 @@ class LoginController extends Controller
     {
         $role = Auth::user()->role_id;
         if ($role === 1) {
-            return '/admin-view';
+            return 'admin/panel';
         }
-        return '/home';
+        return 'dashboard';
     }
 
     /**
