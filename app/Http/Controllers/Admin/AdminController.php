@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -15,7 +16,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $userId = Auth::id();
+        return view('admin.index',compact('userId'));
     }
 
     /**

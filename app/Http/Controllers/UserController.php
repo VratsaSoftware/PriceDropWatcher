@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -44,8 +44,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        dd(2);
+    {   
+        $userId = $id;
+        return view('user.show', compact('userId'));
     }
 
     /**
