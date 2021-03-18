@@ -1,20 +1,22 @@
 {{-- @extends('layouts.admin') --}}
-
 <div class="card">
 	<form class="form-horizontal">
 		<div class="card-body">
 		    <h4 class="card-title">Personal Info</h4>
-		    <h4 class="card-title"><a href="">Settings</a></h4>
 		    <div class="form-group row">
 		        <label for="fname"
-		            class="col-sm-3 text-end control-label col-form-label">Name</label>
+		            class="col-sm-3 text-end control-label col-form-label">First Name</label>
 		        <div class="col-sm-9">
-		            <p class="col-sm-9">my name</p>
-		    	</div>
+		            <input type="text" class="form-control" id="fname"
+		                placeholder="First Name Here">
+		        </div>
+		    </div>
 		    <div class="form-group row">
-		        <label for="lname" class="col-sm-3 text-end control-label col-form-label">Email</label>
+		        <label for="lname" class="col-sm-3 text-end control-label col-form-label">Last
+		            Name</label>
 		        <div class="col-sm-9">
-		            <p>Email</p>
+		            <input type="text" class="form-control" id="lname"
+		                placeholder="Last Name Here">
 		        </div>
 		    </div>
 		    <div class="form-group row">
