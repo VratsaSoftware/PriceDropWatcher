@@ -9,15 +9,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/images/favicon.png">
     <title>Matrix Template - The Ultimate Multipurpose admin template</title>
     <!-- Custom CSS -->
-    <link href="../../assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <link href="../../public/assets/libs/flot/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../../public/dist/css/style.min.css" rel="stylesheet">
+<<<<<<< Updated upstream
     <link rel="stylesheet" type="text/css" href="{{asset('public/dist/css/styles.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+=======
+>>>>>>> Stashed changes
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
