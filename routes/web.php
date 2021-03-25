@@ -32,4 +32,5 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')
     ->middleware('admin')
     ->group(function () {
         Route::resource('panel/', 'AdminController');
+        Route::get('testView', 'AdminController@testView');
     });

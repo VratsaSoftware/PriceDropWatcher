@@ -85,5 +85,10 @@ class AdminController extends Controller
     {
         //
     }
+
+    public function testView()
+    {
+        return view('admin.testView');
+    }
 }
 
