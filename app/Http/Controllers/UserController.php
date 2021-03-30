@@ -1,23 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
-class AdminController extends Controller
+
+class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resourc
+     use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;e.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $userId = Auth::id();
-        return view('admin.index',compact('userId'));
+        
     }
 
     /**
@@ -44,33 +47,41 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
-    {
-        //
+    public function show($id)
+    {   
+        $userId = $id;
+        $user = DB::table('users')
+                ->where('id', $userId)
+                ->first();
+        return view('user.show', compact('userId','user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $userId = $id;
+        $user = DB::table('users')
+                ->where('id', $userId)
+                ->first();
+        return view('user.edit', compact('userId','user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,12 +89,11 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
         //
     }
 }
-
