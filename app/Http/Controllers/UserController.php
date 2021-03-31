@@ -96,4 +96,13 @@ use Illuminate\Support\Facades\Auth;e.
     {
         //
     }
+
+    public function password($id)
+    {
+        $userId = $id;
+        $user = DB::table('users')
+                ->where('id', $userId)
+                ->first();
+        return view('user.editPassword', compact('userId','user'));
+    }
 }

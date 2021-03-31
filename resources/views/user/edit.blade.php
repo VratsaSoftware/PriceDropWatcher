@@ -5,17 +5,15 @@
 			<div class="card-body">
 			    <nav class="navbar navbar-inverse">
 				  	<div class="container-fluid">
-					    <ul class="nav navbar-nav">
-					      <li><a href='{{route('user.show', $userId)}}'>Personal Info</a></li>
-					       <li class="active">
-						      	<p class="card-title">Edit</p>
-						    </li>
-					      <li><a href="">Settings</a></li>
-					    </ul>
+				  		<div class="card-body">
+                            <a href="{{route('user.show', $userId)}}" class="btn btn-info">Personal Info</a>   
+                            <a href="{{route('user.edit', $userId)}}" class="btn btn-info">Edit</a>
+                            <button type="button" class="btn btn-info">Setings</button> 
+                        </div>
 				  	</div>
 				</nav>
 				<div class="form-group row">
-			        <img src="" width="200">
+			        <img src="../../assets/images/background/img4.jpg" width="200">
 			    </div>
 		      	<div class="form-group row">
 			        <label for="fname"

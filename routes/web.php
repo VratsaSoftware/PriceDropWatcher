@@ -27,6 +27,7 @@ Auth::routes();
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('dashboard', 'UsersController@index')->name('dashboard');
 Route::resource('user', 'UserController')->except(['index']);;
+route::get('password', 'UserController@password');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')
     ->middleware('admin')
