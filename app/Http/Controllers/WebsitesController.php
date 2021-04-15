@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Cron_setting;
+use App\Http\Requests\WebsiteValidateRequest;
 use App\Website;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,7 @@ class WebsitesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WebsiteValidateRequest $request)
     {
         $data=$request->except('_token');
         Website::insert($data);
@@ -83,7 +84,7 @@ class WebsitesController extends Controller
      * @param  \App\Website  $website
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Website $website)
+    public function update(WebsiteValidateRequest $request, Website $website)
     {
         $website->update($request->all());
         return redirect()->route('websites.index')
@@ -98,6 +99,8 @@ class WebsitesController extends Controller
      */
     public function destroy(Website $website)
     {
-        //
+        $website->delete();
+        return redirect()->route('websites.index')
+            ->with('success', 'Website was deleted!');
     }
 }
