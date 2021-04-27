@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class portfolio extends Component
+class Musthead extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class portfolio extends Component
      */
     public function render()
     {
-        return view('components.portfolio');
+        return view('components.musthead');
     }
 }

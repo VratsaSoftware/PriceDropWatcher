@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class contact extends Component
+class Portfolio extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class contact extends Component
      */
     public function render()
     {
-        return view('components.contact');
+        return view('components.portfolio');
     }
 }
