@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cron_setting extends Model
+class CronSetting extends Model
 {
     public function websites()
     {

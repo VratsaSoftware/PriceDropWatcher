@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Cron_setting;
+use App\CronSetting;
 use App\Http\Requests\WebsiteValidateRequest;
 use App\Website;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class WebsitesController extends Controller
      */
     public function create()
     {
-        $cron_settings = Cron_setting::all();
+        $cron_settings = CronSetting::all();
         return view('admin.websites.create',compact('cron_settings'));
 
     }
@@ -68,12 +69,12 @@ class WebsitesController extends Controller
      */
     public function edit(Website $website)
     {
-        $cron_settings=Cron_setting::all();
+        $cron_settings=CronSetting::all();
         return view('admin.websites.edit',
             [
-                'cron_settings'=>$cron_settings,
-                'website'=>$website
-                ]);
+                'cron_settings' => $cron_settings,
+                'website' => $website
+            ]);
 
     }
 
