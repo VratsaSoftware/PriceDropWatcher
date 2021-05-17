@@ -27,7 +27,7 @@
                                 <div class="col-6">
                                     <div class="bg-dark p-10 text-white text-center">
                                         <i class="fa fa-user m-b-5 font-16"></i>
-                                        <h5 class="m-b-0 m-t-5">2540</h5>
+                                        <h5 class="m-b-0 m-t-5">{{$userCount}}</h5>
                                         <small class="font-light">Total Users</small>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Latest Posts</h4>
+                    <h4 class="card-title">Latest Links</h4>
                 </div>
                 <div class="comment-widgets scrollable">
                     <!-- Comment Row -->

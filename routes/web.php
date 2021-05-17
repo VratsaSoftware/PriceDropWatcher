@@ -27,10 +27,8 @@ Auth::routes();
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('dashboard', 'UsersController@index')->name('dashboard');
 Route::resource('websites', 'WebsitesController');
-
 Route::namespace('Admin')->prefix('admin')->name('admin.')
     ->middleware('admin')
     ->group(function () {
         Route::resource('panel/', 'AdminController');
-
     });
