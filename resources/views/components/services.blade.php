@@ -8,8 +8,8 @@
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="mt-5">
                         <i class="fas fa-4x fa-gem text-primary mb-4"></i>
-                        <h3 class="h4 mb-2">Sturdy Themes</h3>
-                        <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+                        <h3 class="h4 mb-2">Sturdy Spiders</h3>
+                        <p class="text-muted mb-0">Our spiders are updated regularly to keep them bug free!</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
@@ -22,8 +22,8 @@
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="mt-5">
                         <i class="fas fa-4x fa-globe text-primary mb-4"></i>
-                        <h3 class="h4 mb-2">Ready to Publish</h3>
-                        <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
+                        <h3 class="h4 mb-2">Ready to Get Price</h3>
+                        <p class="text-muted mb-0">You can use this, but you can`t make changes!</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
