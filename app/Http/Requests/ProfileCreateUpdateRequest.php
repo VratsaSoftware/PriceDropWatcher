@@ -24,7 +24,7 @@ class ProfileCreateUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'  => 'required',
+            'image'  => 'required|mimes:jpg,png,jpeg,gif,svg|max:2048|',
         ];
     }
     public function messages()

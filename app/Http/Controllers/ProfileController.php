@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileCreateUpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -76,10 +77,11 @@ class ProfileController extends Controller
      */
     public function update(ProfileCreateUpdateRequest $request, $id)
     {
+        $current = Carbon::now()->format('YmdHs');
         $ext = $request->file('image')->getClientOriginalExtension();
 
         $path = $request->file('image')
-            ->storeAs('public/images', $request->user()->name .'.' . $ext);
+            ->storeAs('public/images', $request->user()->name .'.' . $ext.$current);
 
         $profile = Auth::user();
 
