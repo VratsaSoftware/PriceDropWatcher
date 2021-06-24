@@ -23,10 +23,6 @@ Route::get('/', function () {
 //Route::get('/products/{id}/domain', 'ProductsController@get_domain');
 
 
-Route::get('/clear-cache', function() {
-    Artisan::call('cache:clear');
-    return "Cache is cleared";
-});
 Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
