@@ -33,6 +33,7 @@ Route::put('/profile/{user}/edit','ProfileController@update')->name('profile.upd
 
 Route::get('/change-password','ProfileController@change_password')->name('change_password');
 Route::post('/update-password','ProfileController@update_password')->name('update_password');
+Route::resource('products','ProductsController');
 Route::resource('websites', 'WebsitesController');
 Route::namespace('Admin')->prefix('admin')->name('admin.')
     ->middleware('admin')

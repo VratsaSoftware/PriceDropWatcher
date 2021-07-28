@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class ProductsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        //
     }
 
     /**
@@ -32,7 +24,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -43,16 +35,23 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'link' => 'required',
+        ]);
+
+        $link = $request->all();
+
+        return redirect()->route('products.index')
+            ->with('success','Product created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
         //
     }
@@ -60,10 +59,10 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
         //
     }
@@ -72,10 +71,10 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -83,30 +82,11 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
         //
     }
-    public function changePassword(Request $request)
-    {
-        $request->validate([
-            'current_password' => 'required',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-
-        $user = Auth::user();
-
-        if (!Hash::check($request->current_password, $user->password)) {
-            return back()->with('error', 'Current password does not match!');
-        }
-
-        $user->password = Hash::make($request->password);
-        $user->save();
-
-        return back()->with('success', 'Password successfully changed!');
-    }
-
 }
