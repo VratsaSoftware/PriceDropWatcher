@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Website;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -39,10 +41,24 @@ class ProductsController extends Controller
             'link' => 'required',
         ]);
 
-        $link = $request->all();
+        $link = $request->link;
+        $domain = $this->getDomain($link);
 
-        return redirect()->route('products.index')
-            ->with('success','Product created successfully.');
+        $website = Website::where('domain', '=', $domain)->first();
+
+        if ($website === null) {
+            return redirect()->back();
+        }else{
+            $website_id=$website->id;
+
+            $product = Product::create(['website_id' => $website_id, 'link' => $link]);
+            $user = Auth::user();
+            $product->users()->attach($user);
+            return redirect()->route('dashboard')
+                ->with('success','Product created successfully.');
+        }
+
+
     }
 
     /**
@@ -88,5 +104,9 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+    public function getDomain($link)
+    {
+        return parse_url($link, PHP_URL_HOST);
     }
 }

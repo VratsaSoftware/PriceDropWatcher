@@ -41,8 +41,6 @@
                                 <div class="row">
                                     <div class="col-sm-3"><!--left col-->
 
-
-
                                         <ul class="list-group">
                                             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
                                             <li class="list-group-item text-right"><span class="pull-left"><strong>LINKS</strong></span> 125</li>
@@ -52,15 +50,28 @@
 
                                     </div><!--/col-3-->
 
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="home">
-                                            <hr>
+                                    <div class="col-sm-8">
+                                            <table class="table table-dark table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>link</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @php
+                                                    $num = 1;
+                                                @endphp
+                                                @foreach($products as $product)
+                                                    <tr>
+                                                        <td> {{$num++}} </td>
+                                                        <td> {{$product->link}} </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
 
 
-                                            <hr>
-
-
-                                        </div>
                                     </div>
                                 </div>
 
