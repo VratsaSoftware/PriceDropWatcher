@@ -38,7 +38,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'link' => 'required',
+            'link' => 'required|url',
         ]);
 
         $link = $request->link;
