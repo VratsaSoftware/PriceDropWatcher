@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -23,8 +24,17 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $products=Product::all();
-        return view('users.index',compact('products'));
+        $user = Auth::user();
+        $products = Product::join('product_user','product_user.product_id','=','products.id')
+            ->where('user_id', '=', $user->id)
+            ->get();
+        $count_links=$products->count();
+
+        return view('users.index',
+            [
+                'products' => $products,
+                'count_links' => $count_links
+            ]);
     }
 
     /**

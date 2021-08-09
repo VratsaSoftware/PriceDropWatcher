@@ -43,19 +43,20 @@
 
                                         <ul class="list-group">
                                             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-                                            <li class="list-group-item text-right"><span class="pull-left"><strong>LINKS</strong></span> 125</li>
+                                            <li class="list-group-item text-right"><span class="pull-left"><strong>LINKS</strong></span> {{$count_links}}</li>
                                             <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
                                             <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
                                         </ul>
 
                                     </div><!--/col-3-->
 
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-9">
                                             <table class="table table-dark table-striped">
                                                 <thead>
                                                 <tr>
                                                     <th>#</th>
                                                     <th>link</th>
+                                                    <th>actions</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -66,12 +67,11 @@
                                                     <tr>
                                                         <td> {{$num++}} </td>
                                                         <td> {{$product->link}} </td>
+                                                    <td></td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
-
-
                                     </div>
                                 </div>
 
