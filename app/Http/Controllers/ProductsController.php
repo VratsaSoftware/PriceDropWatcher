@@ -47,7 +47,7 @@ class ProductsController extends Controller
         $website = Website::where('domain', '=', $domain)->first();
 
         if ($website === null) {
-            return redirect()->back();
+            return redirect()->back()->with('error','This website is missing in database ');
         }else{
             $website_id=$website->id;
 

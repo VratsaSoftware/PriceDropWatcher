@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Lib\Scraper;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\BrowserKit\Client;
 
 class UsersController extends Controller
 {
@@ -28,7 +30,7 @@ class UsersController extends Controller
         $products = Product::join('product_user','product_user.product_id','=','products.id')
             ->where('user_id', '=', $user->id)
             ->get();
-        $count_links=$products->count();
+        $count_links = $products->count();
 
         return view('users.index',
             [
@@ -119,6 +121,24 @@ class UsersController extends Controller
         $user->save();
 
         return back()->with('success', 'Password successfully changed!');
+    }
+    public function scrape(Request $request){
+        if (!$request->link_id)
+            return;
+
+        $link = Product::find($request->link_id);
+
+        $scraper = new Scraper(new Client());
+
+        $scraper->handle($link);
+
+        if ($scraper->status == 1) {
+            return response()->json(['status' => 1, 'msg' => 'Scraping done']);
+        } else {
+            return response()->json(['status' => 2, 'msg' => $scraper->status]);
+        }
+
+
     }
 
 }
