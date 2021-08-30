@@ -72,11 +72,7 @@ class ProductsController extends Controller
      */
     public function show(Request $request,Product $product)
     {
-        $get_data = $this->scrape($request)->content();
-
-        $data = json_decode($get_data, true);
-        //dd($data);
-        return view('products.single_product', compact('data'));
+        return view('products.single_product', compact('product'));
     }
 
     /**
@@ -119,7 +115,7 @@ class ProductsController extends Controller
     public function scrape(Request $request)
     {
 
-        $link = Product::find($request->link_id);
+        $product = Product::find($request->link_id);
 
         try {
 
@@ -127,7 +123,7 @@ class ProductsController extends Controller
             $details = array();
             $client = new Client();
 
-            $url = $link->link;
+            $url = $product->link;
             $crawler = $client->request('GET', $url);
 
             $category = $crawler->filterXPath('//ol[@class=\'breadcrumb\']//li//a')->last()->text();
@@ -145,6 +141,10 @@ class ProductsController extends Controller
 
             array_push($details, $title, $img, $price);
             $result = $this->return_result($details);
+            $product->title = $title;
+            $product->image = $img;
+            $product->price = $price;
+            $product->save();
             return response($result, 200);
 
 

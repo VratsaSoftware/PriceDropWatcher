@@ -87,6 +87,9 @@
 
                                                     <button type="button" class="btn btn-primary btn-scrape" title="pull the latest prices">Scrape
                                                         <i class="glyphicon glyphicon-repeat fast-right-spinner" style="display: none"></i></button>
+                                                    <a href="{{route('products.show',$product->id)}}">
+                                                        <button type="button" class="btn btn-info float-left">SHOW</button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach

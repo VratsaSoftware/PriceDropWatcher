@@ -37,7 +37,7 @@ Route::resource('products','ProductsController');
 Route::resource('websites', 'WebsitesController');
 Route::get('scrape', 'ProductsController@scrape')->name('scrape');
 
-Route::get('/products/{id}/details', 'ProductsController@show');
+Route::resource('products', 'ProductsController');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')
     ->middleware('admin')
