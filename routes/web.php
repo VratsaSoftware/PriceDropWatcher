@@ -36,6 +36,7 @@ Route::post('/update-password','ProfileController@update_password')->name('updat
 Route::resource('products','ProductsController');
 Route::resource('websites', 'WebsitesController');
 Route::post('/scrape', 'UsersController@scrape');
+Route::get('/products/{id}/details', 'ProductsController@show');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')
     ->middleware('admin')

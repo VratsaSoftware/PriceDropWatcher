@@ -46,7 +46,7 @@
                                 </ul>
                             </div>
                             <div class="row">
-                                <div class="col-sm-3"><!--left col-->
+                                <div class="col-sm-12"><!--left col-->
 
                                     <ul class="list-group">
                                         <li class="list-group-item text-muted">Activity <i
@@ -62,9 +62,12 @@
                                     </ul>
 
                                 </div><!--/col-3-->
-
-                                <div class="col-sm-9">
-                                    <table class="table table-dark table-striped">
+                        </div>
+                            <div>
+                                <hr>
+                            </div>
+                                <div class="col-sm-12">
+                                    <table class="table table-bordered  table-striped">
                                         <thead>
                                         <tr>
                                             <th>#</th>
@@ -74,10 +77,10 @@
                                         </thead>
                                         <tbody>
                                         @php
-                                            $num = 1;
+                                            $num = 1
                                         @endphp
                                         @foreach($products as $product)
-                                            <tr>
+                                            <tr data-id="{{ $product->id }}">
                                                 <td> {{$num++}} </td>
                                                 <td> {{$product->link}} </td>
                                                 <td>
@@ -115,7 +118,7 @@
             });
 
             $.ajax({
-                url: "{{ url('/scrape') }}",
+                url: "{{ url('scrape') }}",
                 data: {link_id: tRowId, _token: "{{ csrf_token() }}"},
                 method: "post",
                 dataType: "json",
