@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Lib\Scraper;
 use App\Product;
 use ErrorException;
-use Goutte\Client;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -124,68 +123,6 @@ class UsersController extends Controller
 
         return back()->with('success', 'Password successfully changed!');
     }
-    public function scrape(Request $request)
-    {
-        if (!$request->link_id)
-            return;
 
-
-        $link = Product::find($request->link_id);
-
-        try {
-
-
-            $details = array();
-            $client = new Client();
-
-            $url = $link->link;
-            $crawler = $client->request('GET', $url);
-            $category = $crawler->filterXPath('//ol[@class=\'breadcrumb\']//li//a')->last()->text();
-            //dd($category);
-            $title = $crawler->filter('.page-title')->first()->text();
-            $price_bgn = $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/text()')->first()->text();
-            $price_stotinki = $crawler->filterXPath('//div[@class=\'product-highlight product-page-pricing\']//p[@class=\'product-new-price\']/sup/text()')->first()->text();
-            //dd($price_stotinki);
-            $price = (float)$price_bgn . '.' . $price_stotinki;
-
-            //dd($price);
-            $img = $crawler->filterXPath('//a[@class=\'thumbnail product-gallery-image gtm_rp125918\']//img/@src'
-            )->first()->text();
-
-            array_push($details, $title, $img, $price);
-            $result = $this->return_result($details);
-            return response($result, 200);
-
-
-        } catch (ErrorException $e) {
-            $res = $client->getResponse();
-            dd($res->getStatusCode());
-            if ($res->getStatusCode() !== 200) {
-                dd($res->getStatusCode());
-                return $res->getStatusCode();
-            }
-        }
-        $scraper = new Scraper(new Client());
-
-        $scraper->handle($link);
-
-        if ($scraper->status == 1) {
-            return response()->json(['status' => 1, 'msg' => 'Scraping done']);
-        } else {
-            return response()->json(['status' => 2, 'msg' => $scraper->status]);
-        }
-
-
-    }
-
-    private function return_result($details)
-    {
-        $output = [];
-        $output['title'] = $details[0];
-        $output['img'] = $details[1];
-        $output['price'] = $details[2];
-        //dd($output);
-        return $output;
-    }
 
 }

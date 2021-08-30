@@ -118,19 +118,23 @@
             });
 
             $.ajax({
-                url: "{{ url('scrape') }}",
+                url: "{{ route('scrape') }}",
                 data: {link_id: tRowId, _token: "{{ csrf_token() }}"},
-                method: "post",
+                method: "get",
                 dataType: "json",
                 success: function (response) {
 
-                    if (response.status == 1) {
+                    if (response.status === 1) {
                         $(".alert").removeClass("alert-danger").addClass("alert-success").text(response.msg).show();
                     } else {
                         $(".alert").removeClass("alert-success").addClass("alert-danger").text(response.msg).show();
                     }
 
                     btn.find(".fast-right-spinner").hide();
+                },
+                error: function(xhr, status, error) {
+                    let errorMessage = xhr.status + ': ' + xhr.statusText
+                    alert('Error - ' + errorMessage);
                 }
             });
         });

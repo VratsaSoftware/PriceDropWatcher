@@ -35,7 +35,8 @@ Route::get('/change-password','ProfileController@change_password')->name('change
 Route::post('/update-password','ProfileController@update_password')->name('update_password');
 Route::resource('products','ProductsController');
 Route::resource('websites', 'WebsitesController');
-Route::post('/scrape', 'UsersController@scrape');
+Route::get('scrape', 'ProductsController@scrape')->name('scrape');
+
 Route::get('/products/{id}/details', 'ProductsController@show');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')
