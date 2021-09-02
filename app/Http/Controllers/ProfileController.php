@@ -111,7 +111,7 @@ class ProfileController extends Controller
             'confirm_password'=>'required|same:new_password'
         ]);
 
-        $current_user=auth()->user();
+        $current_user = auth()->user();
 
         if(Hash::check($request->old_password,$current_user->password)){
 
@@ -124,8 +124,6 @@ class ProfileController extends Controller
         }else{
             return Redirect::back()->with('error','Old password does not matched.');
         }
-
-
 
     }
 }
